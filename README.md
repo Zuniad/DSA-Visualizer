@@ -1,16 +1,76 @@
 <div align="center">
 
 <!-- ═══════════════════════════════════════════════════════════ -->
-<!--                   ANIMATED HEADER BANNER                   -->
+<!--        ANIMATED HEADER BANNER  (inline SVG — works everywhere) -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:6EE7F7,50:A78BFA,100:F472B6&height=220&section=header&text=DSA%20Visualizer&fontSize=65&fontColor=ffffff&fontAlignY=38&desc=Interactive%20Data%20Structures%20%26%20Algorithms%20Platform&descAlignY=60&descSize=20&animation=fadeIn" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 220" width="100%">
+  <defs>
+    <linearGradient id="hdrGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#6EE7F7"/>
+      <stop offset="50%"  stop-color="#A78BFA"/>
+      <stop offset="100%" stop-color="#F472B6"/>
+    </linearGradient>
+    <!-- wave path -->
+    <clipPath id="waveClip">
+      <path d="M0,0 L900,0 L900,170 Q675,220 450,190 Q225,160 0,200 Z"/>
+    </clipPath>
+    <!-- fade-in animation -->
+    <style>
+      .hdr-title { animation: fadeUp 1s ease forwards; opacity: 0; }
+      .hdr-sub   { animation: fadeUp 1s ease 0.4s forwards; opacity: 0; }
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(14px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+    </style>
+  </defs>
+  <!-- gradient background with wave clip -->
+  <rect width="900" height="220" fill="url(#hdrGrad)" clip-path="url(#waveClip)"/>
+  <!-- bottom wave decoration -->
+  <path d="M0,190 Q225,155 450,185 Q675,215 900,170 L900,220 L0,220 Z" fill="url(#hdrGrad)" opacity="0.35"/>
+  <!-- title -->
+  <text class="hdr-title" x="450" y="100"
+        font-family="Segoe UI, Arial, sans-serif" font-size="52" font-weight="800"
+        fill="white" text-anchor="middle" letter-spacing="2">
+    🚀 DSA Visualizer
+  </text>
+  <!-- subtitle -->
+  <text class="hdr-sub" x="450" y="148"
+        font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="400"
+        fill="rgba(255,255,255,0.9)" text-anchor="middle" letter-spacing="1">
+    Interactive Data Structures &amp; Algorithms Platform
+  </text>
+</svg>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
-<!--                    ANIMATED TYPING SVG                      -->
+<!--   ANIMATED TYPING LINES  (inline SVG — works everywhere)   -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=20&pause=1000&color=A78BFA&center=true&vCenter=true&multiline=true&width=800&height=90&lines=🚀+Step-by-step+Algorithm+Animations;💻+Built-in+Monaco+Code+Editor+(VS+Code+Engine);🌐+Multi-Language+Execution+—+C+%7C+Python+%7C+JavaScript;🎲+Embedded+3D+Spline+Interactive+Scenes" alt="Typing SVG" />
-</a>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 100" width="800" height="100">
+  <defs>
+    <style>
+      .t1,.t2,.t3,.t4 {
+        font-family: 'Courier New', monospace;
+        font-size: 15px;
+        font-weight: 700;
+        fill: #A78BFA;
+        text-anchor: middle;
+        opacity: 0;
+      }
+      .t1 { animation: appear 0.6s ease 0.2s forwards; }
+      .t2 { animation: appear 0.6s ease 1.2s forwards; }
+      .t3 { animation: appear 0.6s ease 2.2s forwards; }
+      .t4 { animation: appear 0.6s ease 3.2s forwards; }
+      @keyframes appear {
+        from { opacity: 0; transform: translateX(-10px); }
+        to   { opacity: 1; transform: translateX(0); }
+      }
+    </style>
+  </defs>
+  <text class="t1" x="400" y="22">🚀  Step-by-step Algorithm Animations</text>
+  <text class="t2" x="400" y="46">💻  Built-in Monaco Code Editor (VS Code Engine)</text>
+  <text class="t3" x="400" y="70">🌐  Multi-Language Execution — C | Python | JavaScript</text>
+  <text class="t4" x="400" y="94">🎲  Embedded 3D Spline Interactive Scenes</text>
+</svg>
 
 <br/><br/>
 
@@ -440,9 +500,19 @@ Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more informa
 <div align="center">
 
 <!-- ═══════════════════════════════════════════════════════════ -->
-<!--                   ANIMATED FOOTER BANNER                   -->
+<!--     ANIMATED FOOTER BANNER  (inline SVG — works everywhere) -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:F472B6,50:A78BFA,100:6EE7F7&height=130&section=footer&animation=fadeIn" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 110" width="100%">
+  <defs>
+    <linearGradient id="ftrGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#F472B6"/>
+      <stop offset="50%"  stop-color="#A78BFA"/>
+      <stop offset="100%" stop-color="#6EE7F7"/>
+    </linearGradient>
+  </defs>
+  <path d="M0,40 Q225,0 450,30 Q675,60 900,10 L900,110 L0,110 Z" fill="url(#ftrGrad)"/>
+  <path d="M0,60 Q225,20 450,50 Q675,80 900,30 L900,110 L0,110 Z" fill="url(#ftrGrad)" opacity="0.5"/>
+</svg>
 
 <br/>
 
