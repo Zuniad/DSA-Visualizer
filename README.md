@@ -69,8 +69,8 @@ Interactive @xyflow/react graph showing data structure classifications.
 🛠️ Tech Stack & Tools
 
 <p align="center">
-<a href="https://www.google.com/search?q=https://skillicons.dev">
-<img src="https://www.google.com/search?q=https://skillicons.dev/icons%3Fi%3Dreact,vite,tailwind,js,py,c,redux,html,css,vscode,github%26perline%3D11" />
+<a href="https://skillicons.dev">
+<img src="https://www.google.com/search?q=https://skillicons.dev/icons%3Fi%3Dreact,vite,tailwind,js,py,c,redux,html,css,vscode,github%26perline%3D11" alt="Tech Stack Logos" />
 </a>
 </p>
 
