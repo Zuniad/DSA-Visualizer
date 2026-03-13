@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- ═══════════════════════════════════════════════════════════ -->
-<!--        ANIMATED HEADER BANNER  (inline SVG — works everywhere) -->
+<!--   HEADER BANNER — GitHub-safe SMIL SVG (no CSS, no emoji)  -->
 <!-- ═══════════════════════════════════════════════════════════ -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 220" width="100%">
   <defs>
@@ -10,66 +10,104 @@
       <stop offset="50%"  stop-color="#A78BFA"/>
       <stop offset="100%" stop-color="#F472B6"/>
     </linearGradient>
-    <!-- wave path -->
+    <linearGradient id="shimmer" x1="0%" y1="0%" x2="200%" y2="0%">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="50%"  stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+      <animateTransform attributeName="gradientTransform" type="translate"
+        from="-900 0" to="900 0" dur="3s" repeatCount="indefinite"/>
+    </linearGradient>
     <clipPath id="waveClip">
-      <path d="M0,0 L900,0 L900,170 Q675,220 450,190 Q225,160 0,200 Z"/>
+      <path d="M0,0 L900,0 L900,168 Q675,218 450,188 Q225,158 0,198 Z"/>
     </clipPath>
-    <!-- fade-in animation -->
-    <style>
-      .hdr-title { animation: fadeUp 1s ease forwards; opacity: 0; }
-      .hdr-sub   { animation: fadeUp 1s ease 0.4s forwards; opacity: 0; }
-      @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(14px); }
-        to   { opacity: 1; transform: translateY(0); }
-      }
-    </style>
   </defs>
-  <!-- gradient background with wave clip -->
+
+  <!-- gradient fill clipped to wave shape -->
   <rect width="900" height="220" fill="url(#hdrGrad)" clip-path="url(#waveClip)"/>
-  <!-- bottom wave decoration -->
-  <path d="M0,190 Q225,155 450,185 Q675,215 900,170 L900,220 L0,220 Z" fill="url(#hdrGrad)" opacity="0.35"/>
-  <!-- title -->
-  <text class="hdr-title" x="450" y="100"
+  <!-- shimmer sweep over the whole banner -->
+  <rect width="900" height="220" fill="url(#shimmer)" clip-path="url(#waveClip)"/>
+  <!-- lower accent wave -->
+  <path d="M0,188 Q225,153 450,183 Q675,213 900,168 L900,220 L0,220 Z"
+        fill="url(#hdrGrad)" opacity="0.35"/>
+
+  <!-- Title — fade in via SMIL opacity -->
+  <text x="450" y="102"
         font-family="Segoe UI, Arial, sans-serif" font-size="52" font-weight="800"
-        fill="white" text-anchor="middle" letter-spacing="2">
-    🚀 DSA Visualizer
+        fill="white" text-anchor="middle" letter-spacing="2" opacity="0">
+    DSA Visualizer
+    <animate attributeName="opacity" from="0" to="1" dur="0.9s" begin="0.1s" fill="freeze"/>
   </text>
-  <!-- subtitle -->
-  <text class="hdr-sub" x="450" y="148"
+
+  <!-- Subtitle — fade in delayed -->
+  <text x="450" y="150"
         font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="400"
-        fill="rgba(255,255,255,0.9)" text-anchor="middle" letter-spacing="1">
+        fill="#f0f0ff" text-anchor="middle" letter-spacing="1" opacity="0">
     Interactive Data Structures &amp; Algorithms Platform
+    <animate attributeName="opacity" from="0" to="1" dur="0.9s" begin="0.6s" fill="freeze"/>
   </text>
+
+  <!-- Decorative dot row — staggered pop-in -->
+  <circle cx="380" cy="175" r="3" fill="white" opacity="0">
+    <animate attributeName="opacity" from="0" to="0.7" dur="0.4s" begin="1.1s" fill="freeze"/>
+  </circle>
+  <circle cx="420" cy="175" r="3" fill="white" opacity="0">
+    <animate attributeName="opacity" from="0" to="0.7" dur="0.4s" begin="1.25s" fill="freeze"/>
+  </circle>
+  <circle cx="450" cy="175" r="4" fill="white" opacity="0">
+    <animate attributeName="opacity" from="0" to="0.9" dur="0.4s" begin="1.4s" fill="freeze"/>
+  </circle>
+  <circle cx="480" cy="175" r="3" fill="white" opacity="0">
+    <animate attributeName="opacity" from="0" to="0.7" dur="0.4s" begin="1.55s" fill="freeze"/>
+  </circle>
+  <circle cx="520" cy="175" r="3" fill="white" opacity="0">
+    <animate attributeName="opacity" from="0" to="0.7" dur="0.4s" begin="1.7s" fill="freeze"/>
+  </circle>
 </svg>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
-<!--   ANIMATED TYPING LINES  (inline SVG — works everywhere)   -->
+<!--  FEATURE LINES — GitHub-safe SMIL SVG (no CSS, no emoji)   -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 100" width="800" height="100">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 112" width="820">
   <defs>
-    <style>
-      .t1,.t2,.t3,.t4 {
-        font-family: 'Courier New', monospace;
-        font-size: 15px;
-        font-weight: 700;
-        fill: #A78BFA;
-        text-anchor: middle;
-        opacity: 0;
-      }
-      .t1 { animation: appear 0.6s ease 0.2s forwards; }
-      .t2 { animation: appear 0.6s ease 1.2s forwards; }
-      .t3 { animation: appear 0.6s ease 2.2s forwards; }
-      .t4 { animation: appear 0.6s ease 3.2s forwards; }
-      @keyframes appear {
-        from { opacity: 0; transform: translateX(-10px); }
-        to   { opacity: 1; transform: translateX(0); }
-      }
-    </style>
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#6EE7F7"/>
+      <stop offset="100%" stop-color="#F472B6"/>
+    </linearGradient>
   </defs>
-  <text class="t1" x="400" y="22">🚀  Step-by-step Algorithm Animations</text>
-  <text class="t2" x="400" y="46">💻  Built-in Monaco Code Editor (VS Code Engine)</text>
-  <text class="t3" x="400" y="70">🌐  Multi-Language Execution — C | Python | JavaScript</text>
-  <text class="t4" x="400" y="94">🎲  Embedded 3D Spline Interactive Scenes</text>
+
+  <!-- animated accent underline -->
+  <rect x="260" y="108" width="0" height="2" fill="url(#lineGrad)" rx="1">
+    <animate attributeName="width" from="0" to="300" dur="1s" begin="3.6s" fill="freeze"/>
+    <animate attributeName="x"     from="410" to="260" dur="1s" begin="3.6s" fill="freeze"/>
+  </rect>
+
+  <!-- Line 1 -->
+  <text x="410" y="22" font-family="Courier New, monospace" font-size="15" font-weight="700"
+        fill="#A78BFA" text-anchor="middle" opacity="0">
+    &#x25B6;  Step-by-step Algorithm Animations
+    <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.2s" fill="freeze"/>
+  </text>
+
+  <!-- Line 2 -->
+  <text x="410" y="46" font-family="Courier New, monospace" font-size="15" font-weight="700"
+        fill="#A78BFA" text-anchor="middle" opacity="0">
+    &#x25B6;  Built-in Monaco Code Editor (VS Code Engine)
+    <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.0s" fill="freeze"/>
+  </text>
+
+  <!-- Line 3 -->
+  <text x="410" y="70" font-family="Courier New, monospace" font-size="15" font-weight="700"
+        fill="#A78BFA" text-anchor="middle" opacity="0">
+    &#x25B6;  Multi-Language Execution &#x2014; C | Python | JavaScript
+    <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.8s" fill="freeze"/>
+  </text>
+
+  <!-- Line 4 -->
+  <text x="410" y="94" font-family="Courier New, monospace" font-size="15" font-weight="700"
+        fill="#A78BFA" text-anchor="middle" opacity="0">
+    &#x25B6;  Embedded 3D Spline Interactive Scenes
+    <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="2.6s" fill="freeze"/>
+  </text>
 </svg>
 
 <br/><br/>
@@ -500,7 +538,7 @@ Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more informa
 <div align="center">
 
 <!-- ═══════════════════════════════════════════════════════════ -->
-<!--     ANIMATED FOOTER BANNER  (inline SVG — works everywhere) -->
+<!--   FOOTER WAVE — GitHub-safe SMIL SVG (no CSS, no emoji)    -->
 <!-- ═══════════════════════════════════════════════════════════ -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 110" width="100%">
   <defs>
@@ -510,8 +548,16 @@ Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more informa
       <stop offset="100%" stop-color="#6EE7F7"/>
     </linearGradient>
   </defs>
-  <path d="M0,40 Q225,0 450,30 Q675,60 900,10 L900,110 L0,110 Z" fill="url(#ftrGrad)"/>
-  <path d="M0,60 Q225,20 450,50 Q675,80 900,30 L900,110 L0,110 Z" fill="url(#ftrGrad)" opacity="0.5"/>
+  <!-- back wave layer — fades in first -->
+  <path d="M0,60 Q225,20 450,50 Q675,80 900,30 L900,110 L0,110 Z"
+        fill="url(#ftrGrad)" opacity="0">
+    <animate attributeName="opacity" from="0" to="0.45" dur="0.8s" begin="0.1s" fill="freeze"/>
+  </path>
+  <!-- front wave layer — fades in second -->
+  <path d="M0,40 Q225,0 450,30 Q675,60 900,10 L900,110 L0,110 Z"
+        fill="url(#ftrGrad)" opacity="0">
+    <animate attributeName="opacity" from="0" to="1" dur="0.8s" begin="0.5s" fill="freeze"/>
+  </path>
 </svg>
 
 <br/>
