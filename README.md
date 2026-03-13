@@ -10,36 +10,58 @@
       <stop offset="50%"  stop-color="#A78BFA"/>
       <stop offset="100%" stop-color="#F472B6"/>
     </linearGradient>
-    <!-- wave path -->
+    <linearGradient id="shimmer" x1="0%" y1="0%" x2="200%" y2="0%">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="50%"  stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+      <animateTransform attributeName="gradientTransform" type="translate"
+        from="-900 0" to="900 0" dur="3s" repeatCount="indefinite"/>
+    </linearGradient>
     <clipPath id="waveClip">
-      <path d="M0,0 L900,0 L900,170 Q675,220 450,190 Q225,160 0,200 Z"/>
+      <path d="M0,0 L900,0 L900,168 Q675,218 450,188 Q225,158 0,198 Z"/>
     </clipPath>
-    <!-- fade-in animation -->
-    <style>
-      .hdr-title { animation: fadeUp 1s ease forwards; opacity: 0; }
-      .hdr-sub   { animation: fadeUp 1s ease 0.4s forwards; opacity: 0; }
-      @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(14px); }
-        to   { opacity: 1; transform: translateY(0); }
-      }
-    </style>
   </defs>
-  <!-- gradient background with wave clip -->
+
+  <!-- gradient fill clipped to wave shape -->
   <rect width="900" height="220" fill="url(#hdrGrad)" clip-path="url(#waveClip)"/>
-  <!-- bottom wave decoration -->
-  <path d="M0,190 Q225,155 450,185 Q675,215 900,170 L900,220 L0,220 Z" fill="url(#hdrGrad)" opacity="0.35"/>
-  <!-- title -->
-  <text class="hdr-title" x="450" y="100"
+  <!-- shimmer sweep over the whole banner -->
+  <rect width="900" height="220" fill="url(#shimmer)" clip-path="url(#waveClip)"/>
+  <!-- lower accent wave -->
+  <path d="M0,188 Q225,153 450,183 Q675,213 900,168 L900,220 L0,220 Z"
+        fill="url(#hdrGrad)" opacity="0.35"/>
+
+  <!-- Title — fade in via SMIL opacity -->
+  <text x="450" y="102"
         font-family="Segoe UI, Arial, sans-serif" font-size="52" font-weight="800"
-        fill="white" text-anchor="middle" letter-spacing="2">
-    🚀 DSA Visualizer
+        fill="white" text-anchor="middle" letter-spacing="2" opacity="0">
+    DSA Visualizer
+    <animate attributeName="opacity" from="0" to="1" dur="0.9s" begin="0.1s" fill="freeze"/>
   </text>
-  <!-- subtitle -->
-  <text class="hdr-sub" x="450" y="148"
+
+  <!-- Subtitle — fade in delayed -->
+  <text x="450" y="150"
         font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="400"
-        fill="rgba(255,255,255,0.9)" text-anchor="middle" letter-spacing="1">
+        fill="#f0f0ff" text-anchor="middle" letter-spacing="1" opacity="0">
     Interactive Data Structures &amp; Algorithms Platform
+    <animate attributeName="opacity" from="0" to="1" dur="0.9s" begin="0.6s" fill="freeze"/>
   </text>
+
+  <!-- Decorative dot row — staggered pop-in -->
+  <circle cx="380" cy="175" r="3" fill="white" opacity="0">
+    <animate attributeName="opacity" from="0" to="0.7" dur="0.4s" begin="1.1s" fill="freeze"/>
+  </circle>
+  <circle cx="420" cy="175" r="3" fill="white" opacity="0">
+    <animate attributeName="opacity" from="0" to="0.7" dur="0.4s" begin="1.25s" fill="freeze"/>
+  </circle>
+  <circle cx="450" cy="175" r="4" fill="white" opacity="0">
+    <animate attributeName="opacity" from="0" to="0.9" dur="0.4s" begin="1.4s" fill="freeze"/>
+  </circle>
+  <circle cx="480" cy="175" r="3" fill="white" opacity="0">
+    <animate attributeName="opacity" from="0" to="0.7" dur="0.4s" begin="1.55s" fill="freeze"/>
+  </circle>
+  <circle cx="520" cy="175" r="3" fill="white" opacity="0">
+    <animate attributeName="opacity" from="0" to="0.7" dur="0.4s" begin="1.7s" fill="freeze"/>
+  </circle>
 </svg>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
